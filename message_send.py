@@ -29,6 +29,7 @@ def send_message(number,mail,name,pass_no,parent_email,rector_contact,message,sh
     student=requests.get("http://api.msg91.com/api/sendhttp.php?sender=MSGIND&route=4&mobiles=+91"+str(number)+"&authkey=192990AkDQ3bDBv5a59de99&country=91&message="+message)
     rector=requests.get("http://api.msg91.com/api/sendhttp.php?sender=MSGIND&route=4&mobiles=+91"+str(rector_contact)+"&authkey=192990AkDQ3bDBv5a59de99&country=91&message="+(messages.rector_sms%(name,pass_no)))
     print(messages.rector_sms%(name,pass_no))
+
     row=[name,number,message,datetime.datetime.now().time()]
     sheet.append_row(row)
 
