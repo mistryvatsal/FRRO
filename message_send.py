@@ -8,13 +8,8 @@ from oauth2client.service_account import ServiceAccountCredentials
 import gmail
 
 
-
-
-
-def send_message(number,mail,name,pass_no,parent_email,rector_contact,message,sheet):
-
-
-    #using twillio
+def send_message(number, mail, name, pass_no, parent_email, rector_contact, message, sheet):
+    # using twillio
     # #print("came here")
     # number2="+"+str(number)
     #
