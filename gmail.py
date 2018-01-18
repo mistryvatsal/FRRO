@@ -46,7 +46,7 @@ def send_message_internal(service, user_id, message):
         # print('Message Id: %s' % message['id'])
         return message
     except errors.HttpError as error:
-# print('An error occurred: %s' % error)
+        print('An error occurred: %s' % error)
 
 
 def send_message(to, subject, msgPlain):
