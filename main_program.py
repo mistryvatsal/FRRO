@@ -8,15 +8,11 @@ import json
 import schedule   #scheduling
 import gspread                              #google spreadsheet api
 from oauth2client.service_account import ServiceAccountCredentials    #authentiction
-import message_send                     #python file for further mailing and messaging
+import message_send                    # python file for further mailing and messaging
 import messages
 
 
-
-
-
-
-def thread_row(sheet,db_row,json_data,file):   #this thread is going to work continously for each student unless the task gets over
+def thread_row(sheet, db_row, json_data, file):   #this thread is going to work continously for each student unless the task gets over
     print("into thread_row")
 
     def check_date_match(db_row):
