@@ -9,7 +9,7 @@ from apiclient import errors, discovery
 
 SCOPES = 'https://www.googleapis.com/auth/gmail.send'
 CLIENT_SECRET_FILE = 'client_secret_key_gmail.json'
-APPLICATION_NAME = 'FRRO-PU-EMAIL-APP'
+APPLICATION_NAME = 'FRRO-Gmail API'
 
 
 def get_credentials():
@@ -18,6 +18,7 @@ def get_credentials():
     if not os.path.exists(credential_dir):
         os.makedirs(credential_dir)
     credential_path = os.path.join(credential_dir,'gmail-python-email-send.json')
+    print(credential_path)
     store = oauth2client.file.Storage(credential_path)
     credentials = store.get()
     if not credentials or credentials.invalid:
@@ -31,7 +32,7 @@ def get_credentials():
 def create_message(to, subject, msgPlain):
     msg = MIMEMultipart('alternative')
     msg['Subject'] = subject
-    msg['From'] = 'isacfrropu@gmail.com'
+    msg['From'] = 'frroreminder.isac@paruluniversity.ac.in'
     msg['To'] = to
     msg.attach(MIMEText(msgPlain, 'plain'))
     raw = base64.urlsafe_b64encode(msg.as_bytes())
@@ -55,5 +56,3 @@ def send_message(to, subject, msgPlain):
     service = discovery.build('gmail', 'v1', http=http)
     message_final = create_message(to, subject, msgPlain)
     send_message_internal(service, "me", message_final)
-
-
