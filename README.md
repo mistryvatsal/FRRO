@@ -15,3 +15,15 @@ This repository is an automatic reminder application for various documents neede
     2. Names of all the students whose process is going on will be saved in data.json file<br>
     3.If any frro row contain no entries ; for the moment make it as 0000-00-00 i.e as a dummy entry
 </p>
+
+<h2>Algorithm</h2>
+<p>
+1. Script triggers every day at a specific time<br>
+2. Check if database is updated. <br>
+3. Fetch the database from excel file from cloud. <br>
+4. Take the 'frro student date' from the the database.<br>
+5. Start the scheduling for 1,2,3,8,9,10 day for the all the students and will send messages to all those students on those specific days.<br>
+6. Make the scheduling for same students on 11th month as the same students will have to do the same process after 11 months.<br>
+</p>
+<br>
+<p> Run the program using <b>main_program.py</b>
