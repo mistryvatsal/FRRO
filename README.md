@@ -24,6 +24,8 @@ This repository is an automatic reminder application for various documents neede
 6. Make the scheduling for same students on 11th month as the same students will have to do the same process after 11 months.<br>
 </p>
 <br>
+![Application workflow](FRRO_flow_diagram.JPG)
+<br>
 <h2>Libraries needed</h2>
     <i> <p>
         &ensp;&ensp;&ensp;&ensp;1. schedule<br>
