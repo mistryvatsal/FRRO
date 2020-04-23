@@ -24,8 +24,18 @@ This repository is an automatic reminder application for various documents neede
 6. Make the scheduling for same students on 11th month as the same students will have to do the same process after 11 months.<br>
 </p>
 <br>
-<p> Run the program using <b>main_program.py</b>
-<p>Developers: <br>
+<h2>Libraries needed</h2>
+    <i> <p>
+        &ensp;&ensp;&ensp;&ensp;1. schedule<br>
+        &ensp;&ensp;&ensp;&ensp;2. gspread<br>
+        &ensp;&ensp;&ensp;&ensp;3. oauth2client<br>
+        &ensp;&ensp;&ensp;&ensp;4. twilio<br>
+    </i> </p>
+  
+<h4> Run the program using <b>main_program.py</b> </h4>
+
+<h2>Developers</h2> 
+<p> <br>
     <i>
         &ensp;&ensp;&ensp;&ensp;Harsh Patel <br>
         &ensp;&ensp;&ensp;&ensp;Vatsal Mistry 
