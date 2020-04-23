@@ -35,7 +35,7 @@ This repository is an automatic reminder application for various documents neede
 <h4> Run the program using <b>main_program.py</b> </h4>
 
 <h2>Developers</h2> 
-<p> <br>
+<p>
     <i>
         &ensp;&ensp;&ensp;&ensp;Harsh Patel <br>
         &ensp;&ensp;&ensp;&ensp;Vatsal Mistry 
