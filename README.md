@@ -25,4 +25,9 @@ This repository is an automatic reminder application for various documents neede
 </p>
 <br>
 <p> Run the program using <b>main_program.py</b>
-<p>Developers: Harsh Patel, Vatsal Mistry </p>
+<p>Developers: <br>
+    <i>
+        &ensp;&ensp;&ensp;&ensp;Harsh Patel <br>
+        &ensp;&ensp;&ensp;&ensp;Vatsal Mistry 
+    </i>
+</p>
