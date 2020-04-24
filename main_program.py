@@ -12,7 +12,7 @@ import message_send                    # python file for further mailing and mes
 import messages
 
 
-def thread_row(sheet, db_row, json_data, file):   #this thread is going to work continously for each student unless the task gets over
+def thread_row(sheet,db_row,json_data,file):   #this thread is going to work continously for each student unless the task gets over
     print("into thread_row")
 
     def check_date_match(db_row):
@@ -30,22 +30,21 @@ def thread_row(sheet, db_row, json_data, file):   #this thread is going to work 
                     day_12=datetime.strptime(db_row['frro %d'%(i)+'(rc/rp)_start'],'%Y-%m-%d')+timedelta(days=12)
                     #print("into loop2")
                     if(i==1):
-
-
                         if(str(datetime.now().date())==str(day_1.date()) or  str(datetime.now().date())==str(day_2) or  str(datetime.now().date())==str(day_3)):      #column 12
                                 print("condition satisfied for day 1,2,3 frro 1")
 
-                                _thread.start_new_thread(message_send.send_message,(db_row['contact number'],db_row['email'],db_row['name of student'],db_row['passport no'],db_row['parent email'],db_row['rector contact'],messages.student_sms_1frro123,sheet))
+                                _thread.start_new_thread(message_send.send_message,(db_row['contact number'],db_row['email'],db_row['name of student'],db_row['passport no'],db_row['parent email'],db_row['rector contact'],db_row['parent email'],messages.student_sms_1frro123,sheet))
 
                         if(str(datetime.now().date())==str(day_12) or  str(datetime.now().date())==str(day_10) or  str(datetime.now().date())==str(day_11)):
                                 print("condition satisfied for day 10,11,12 frro 1")
                                 _thread.start_new_thread(message_send.send_message,(db_row['contact number'],db_row['email'],db_row['name of student'],db_row['passport no'],db_row['parent email'],db_row['rector contact'],messages.student_sms_1frro101112,sheet))
                     if(i==2 or i==3 or i==4):
-                        print("condition satisfied for frro2 or frro3 or frro4")
-                        if(db_row["frro%d incampus"%(i)]=='yes'):
-                            _thread.start_new_thread(message_send.send_message,(db_row['contact number'],db_row['email'],db_row['name of student'],db_row['passport no'],db_row['parent email'],db_row['rector contact'],messages.student_sms_otherfrro_incampus,sheet))
-                        if(db_row["frro%d incampus"%(i)]=='no'):
-                            _thread.start_new_thread(message_send.send_message,(db_row['contact number'],db_row['email'],db_row['name of student'],db_row['passport no'],db_row['parent email'],db_row['rector contact'],messages.student_sms_otherfrro_outcampus,sheet))
+                        if(str(datetime.now().date())==str(day_1.date()) or  str(datetime.now().date())==str(day_2) or  str(datetime.now().date())==str(day_3 or str(datetime.now().date())==str(day_12) or  str(datetime.now().date())==str(day_10) or  str(datetime.now().date())==str(day_11))):
+                            print("condition satisfied for frro2 or frro3 or frro4")
+                            if(db_row["frro%d incampus"%(i)]=='yes'):
+                                _thread.start_new_thread(message_send.send_message,(db_row['contact number'],db_row['email'],db_row['name of student'],db_row['passport no'],db_row['parent email'],db_row['rector contact'],messages.student_sms_otherfrro_incampus,sheet))
+                            if(db_row["frro%d incampus"%(i)]=='no'):
+                                _thread.start_new_thread(message_send.send_message,(db_row['contact number'],db_row['email'],db_row['name of student'],db_row['passport no'],db_row['parent email'],db_row['rector contact'],messages.student_sms_otherfrro_outcampus,sheet))
 
 
         # if(db_row['single_visa']==0):    # if the visa is not for the whole course and needs renewel in between
@@ -53,10 +52,6 @@ def thread_row(sheet, db_row, json_data, file):   #this thread is going to work 
         #     day_1=datetime.strptime(db_row['visa issue date'],'%Y-%m-%d')+timedelta(days=1)
     #print(datetime.now().date())
     #print(datetime.strptime(db_row['frro 4(rc/rp)_start'],'%Y-%m-%d')+timedelta(days=14))
-
-
-
-
 
     def check_condition(db_row,json_data):
         if(  datetime.now() < (datetime.strptime(db_row['frro 4(rc/rp)_start'],'%Y-%m-%d'))+timedelta(days=14)   ):
@@ -69,22 +64,18 @@ def thread_row(sheet, db_row, json_data, file):   #this thread is going to work 
             schedule.clear('daily_routine')
             return schedule.CancelJob
 
-    schedule.every().day.at("22:24").do(lambda:check_condition(db_row,json_data)).tag('daily_routine','friend')          #checking the date every date at 9:00
-
-
-
+    schedule.every().day.at("11:33").do(lambda:check_condition(db_row,json_data)).tag('daily_routine','friend')          #checking the date every date at 9:00
 
 def update_database():    #taking data from the sheets at regular intervals 7:00 am
     print("update_database")
     try:
         print("into try function")
         scope = ['https://spreadsheets.google.com/feeds']
-        creds = ServiceAccountCredentials.from_json_keyfile_name('client_secret_key2.json', scope)
+        creds = ServiceAccountCredentials.from_json_keyfile_name('FRRO-Reminder-API.json', scope)
         client = gspread.authorize(creds)
         sheet = client.open('FRRO_PU').sheet1
         db=sheet.get_all_records()       #taking all the records
         print(db)
-
         file=open('data.json','r')
         json_data=json.load(file)
         file.close()
@@ -101,19 +92,8 @@ def update_database():    #taking data from the sheets at regular intervals 7:00
 
     except:
         schedule.every(1).minute.do(update_database)
-schedule.every().day.at("22:23").do(update_database)    #checks every day and updates the datebase
+schedule.every().day.at("16:46").do(update_database)    #checks every day and updates the datebase
 
 while True:
 
     schedule.run_pending()
-
-
-
-
-
-
-
-
-
-
-
